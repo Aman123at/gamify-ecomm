@@ -1,0 +1,48 @@
+networks:
+  gamify_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+
+services:
+  gamifyapp:
+    container_name: gamify_server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/app
+      - ~/.nuget:/root/.nuget
+    networks:
+      gamify_network:
+        ipv4_address: 192.168.1.101
+    profiles: [app]
+  gamify-db:
+    image: postgres
+    container_name: gamify_db
+    ports:
+      - "5432:5432"
+    env_file:
+      - path: ./compose.env
+        required: true
+    networks:
+      gamify_network:
+        ipv4_address: 192.168.1.102
+    volumes:
+      - ./gamify-db-data:/var/lib/postgresql/data
+    profiles: [db]
+  rabbitmq:
+    image: rabbitmq
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+    networks:
+      gamify_network:
+        ipv4_address: 192.168.1.103
+    volumes:
+      - ./rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit
+    profiles: [rabbit]
+  

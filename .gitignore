@@ -1,0 +1,8 @@
+.env
+bin/
+bin
+compose.env
+obj
+rabbitmq-data
+gamify-db-data
+app
