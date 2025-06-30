@@ -1,3 +1,7 @@
+# High Level Design
+<img width="957" alt="Screenshot 2025-06-30 at 10 25 33 AM" src="https://github.com/user-attachments/assets/1b66752a-e1e9-42fe-9cf7-42425ebc72eb" />
+
+
 # Gamify API Documentation
 
 A comprehensive e-commerce API for gaming products with authentication, cart management, and order processing.
