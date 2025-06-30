@@ -234,11 +234,3 @@ dotnet run --environment Development
 dotnet ef migrations add MigrationName
 dotnet ef database update
 ```
-
-## 📞 Support
-
-For API support, contact: support@gamify.com
-
-## 📄 License
-
-This project is licensed under the MIT License. 
